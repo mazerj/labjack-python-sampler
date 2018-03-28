@@ -21,6 +21,12 @@ Once the drivers are installed, you can do:
 to test the setup -- this will sample for a few secs and dump
 the data to stdout.
 
+If you're using this -- it's not a bad idea to sample for 10ms or as
+soon as the labjack module is imported to initialize all the
+code. Otherwise, you can get some lag the first time the acquisition
+is started. Pretty sure this has something to do with delayed loading
+of `librt` by `ctypes` monoclock.py - it's not actually loaded until
+it's used, or something like that.
 
 
 
